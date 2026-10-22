@@ -1,0 +1,42 @@
+---
+const { airport }=Astro.props; const d=airport.data;
+const price=d.price===null?'价格待核实':`¥${d.price}/月起`;
+const themes=['emerald','sky','amber','violet','teal','cyan','indigo','rose','slate','lime','blue','orange','fuchsia','red','navy'];
+const positions=['专线综合优选','稳定线路取向','低价备用候选','多设备使用','轻量均衡方案','新手入门选择','低延迟场景','流量宽松方案','组合线路观察','轻量备用观察','综合使用观察','低门槛观察','日常线路观察','安全优先观察','多地区观察'];
+const theme=themes[d.rank-1]??'slate'; const position=positions[d.rank-1]??'持续观察';
+const profiles:Record<string,string>={
+  'EdgeNova 边缘节点':'定位偏向低门槛专线和日常综合使用，适合需要网页浏览、视频与 AI 工具兼顾的用户。当前资料相对完整，价格、优惠码和一次性订阅状态都能直接比较。需要注意的是，IEPL 标签本身并不能保证所有地区和所有时段都有相同表现，仍应关注节点倍率、入口位置以及晚高峰波动。',
+  '光年梯':'采用中转与 IEPL 专线并行的产品定位，适合希望在常用节点之外保留不同线路选择的用户。100 GB 更接近轻量到中等用量，需要经常观看高清视频的用户应提前估算流量。购买前建议确认一次性套餐覆盖哪些节点，以及专线节点是否存在额外倍率。',
+  '极连云':'主打公网中转与相对灵活的入门套餐，130 GB 对日常浏览、短视频和轻度流媒体较为从容。它更适合作为低成本主力候选或备用订阅，而不是只凭宣传参数判断的高端方案。应重点核对晚高峰拥塞、订阅更新稳定性和一次性套餐的有效期规则。',
+  '速界':'线路定位偏向 IEPL 专线，适合看重常用地区响应速度和多设备使用的用户。120 GB 能覆盖一般日常需求，但家庭共享或持续高清视频播放仍需关注消耗。优惠码和一次性订阅在下单前应再次确认，尤其要区分活动价格、续费价格与不同套餐的节点权限。',
+  '快狸':'整体配置偏均衡，100 GB 套餐更适合轻度流媒体、网页浏览和移动设备使用。当前资料显示支持一次性订阅，对不想长期续费的备用用户更友好。选择时应核对可用客户端、订阅格式、流量倍率及高峰期节点负载，不建议只根据最低价格作决定。',
+  '可信云':'以 IEPL 专线和清晰的入门月付作为主要卖点，适合第一次接触订阅服务、希望控制试错成本的用户。120 GB 属于常见入门容量，通常足够个人日常使用。建议购买前检查公告渠道、工单响应、退款边界以及一次性订阅与月付套餐是否共享相同节点。',
+  '瞬云':'更强调低延迟使用体验，适合网页交互、即时通信和对响应速度较敏感的场景。100 GB 流量并不适合长期大文件下载，但作为个人轻量主力或备用线路较合理。实际体验会受到本地运营商和入口地区影响，建议在常用时间段测试多个节点。',
+  '云图':'130 GB 流量比常见 100 GB 入门套餐更宽松，适合日常使用中包含一定视频需求的用户。公网中转通常更依赖运营调度和节点负载，因此价格较高并不自动等于晚高峰更快。购买前应确认一次性订阅的有效期、节点覆盖和流量清零规则。',
+  '鲲鹏加速':'采用中转与专线组合的定位，理论上能覆盖更广的使用场景，但目前指定参考榜单没有对应价格。适合愿意自行询价、核对线路表并进行短期测试的用户。一次性订阅仍处于待观察状态，付款前应确认是否真实提供、是否限节点以及是否有使用期限。',
+  '云界线':'以公网中转和 100 GB 常规流量作为展示口径，更适合作为轻量使用或备用候选。当前缺少指定榜单可对应的价格，因此不建议仅凭优惠码或推广页面直接长期付款。应重点核对入口质量、套餐续费价格、订阅有效期和客服渠道。',
+  '大佬云':'中转与 IEPL 专线组合让它在产品定位上偏向综合使用，130 GB 流量对个人用户相对充足。不过目前价格与一次性订阅信息仍需进一步确认。适合愿意先购买短周期套餐，再根据常用地区、晚高峰和流媒体表现决定是否续费的用户。',
+  '环球梯':'100 GB 的配置更偏入门和备用用途，公网中转适合对线路要求不极端、希望保持较低使用成本的用户。由于当前缺少可对应的公开价格，页面不提供推算数字。购买前应确认优惠码、流量倍率、节点地区和套餐是否会自动续费。',
+  '闪电鼠':'产品定位介于日常中转和专线体验之间，120 GB 适合个人综合使用。当前价格和一次性订阅状态尚未获得指定参考榜单确认，更适合列入观察名单而非直接长期购买。建议先检查公告频率、节点维护记录和退款条款，再进行小额测试。',
+  '榴莲云':'130 GB 常规流量适合有一定视频需求的个人用户，线路口径以公网中转为主。当前推广地址使用 HTTP，访问和提交信息时应特别关注连接安全，不要在非加密页面输入敏感信息。价格和一次性订阅均待确认，风险核对优先级高于优惠力度。',
+  '神行加速':'中转与专线并行的定位适合希望兼顾不同地区节点的用户，120 GB 能覆盖一般个人需求。由于价格、一次性订阅和更多运营资料仍待观察，当前更适合作为候选名单中的补充项目。建议确认客户端兼容、设备数量和流量倍率后再决定是否购买。'
+};
+const description=`${profiles[d.name]??d.tagline} ${d.name}目前在榜单中排第 ${d.rank}，本站按 ${d.traffic} 常规月流量口径展示，线路类型为 ${d.protocols.join('、')}。${d.rank<=8?'当前资料显示支持一次性订阅。':'一次性订阅状态暂未确认。'} ${d.status}，页面参数只适合作为初步筛选依据。`;
+---
+<article class="rank-airport" data-theme={theme}>
+  <div class="rank-side"><span class="rank-number">{String(d.rank).padStart(2,'0')}</span><span class="rank-label">综合排名</span></div>
+  <div class="rank-main">
+    <header class="rank-top"><div><div class="labels">{d.featured&&<span class="label hot">重点推荐</span>}<span class="label">{d.status}</span></div><h2>{d.name}</h2><p class="quick">{d.traffic} · {d.protocols.join(' / ')} · {price}</p></div><div class="price-box"><small>参考月付</small><strong>{d.price===null?'待核实':`¥${d.price}`}</strong><span>{d.price===null?'暂无对应价格':'以结算页为准'}</span></div></header>
+    <div class="position-banner"><span>{position}</span><small>{d.rank<=3?'本期重点比较':d.rank<=8?'已有明确参考价格':'资料仍在持续观察'}</small></div>
+    <p class="summary">{description}</p>
+    <div class="editorial-notes"><p><b>为什么在这里：</b>排名综合参考价格、常规流量、线路类型、一次性订阅状态与资料完整度。它是筛选顺序，不是速度或永久稳定性的保证。</p><p><b>更适合：</b>{d.rank<=3?'希望优先比较价格、一次性订阅和当前优惠的用户。':d.rank<=8?'希望从已有明确参考价格的服务中进一步筛选的用户。':'愿意自行核对价格、一次性套餐和线路详情，并先短期测试的用户。'}</p><p><b>购买前核对：</b>结算价格、优惠码有效性、流量倍率、套餐重置日期、同时在线设备数、退款条件与晚高峰表现。</p></div>
+    <div class="details"><div><small>一次性订阅</small><b>{d.oneTime}</b></div><div><small>优惠码</small><b>{d.coupon??'暂无'}</b></div><div><small>适合场景</small><b>{d.streaming.join(' · ')}</b></div><div><small>资料更新</small><b>{d.checkedAt.toLocaleDateString('zh-CN')}</b></div></div>
+    <ul><li>{d.tagline}</li><li>推广链接已使用 sponsored 标记，本站可能从成交中获得佣金</li><li>建议先小额试用，并核对流量倍率、重置日期与退款规则</li></ul>
+    <footer class="rank-actions"><a class="text-link" href={`/airports/${airport.id}/`}>查看完整资料 →</a><a class="btn primary" href={d.affiliateUrl} rel="nofollow sponsored">前往服务商 <span class="badge ad">推广</span></a></footer>
+  </div>
+</article>
+<style>
+.rank-airport{display:grid;grid-template-columns:90px 1fr;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 28px rgba(15,23,42,.05)}.rank-side{background:linear-gradient(155deg,#0b1220,#193149);color:#fff;display:flex;flex-direction:column;align-items:center;padding:27px 10px}.rank-number{font-size:32px;font-weight:900;letter-spacing:-.05em}.rank-label{font-size:11px;color:#9eb0c5;writing-mode:vertical-rl;margin-top:18px;letter-spacing:.15em}.rank-main{padding:25px 28px}.rank-top{display:flex;justify-content:space-between;gap:25px}.rank-top h2{font-size:28px;margin:7px 0 2px;letter-spacing:-.03em}.labels{display:flex;gap:6px}.label{font-size:11px;padding:3px 8px;border-radius:999px;color:var(--brand);background:var(--soft);font-weight:750}.label.hot{background:#fff0d0;color:#9a5d00}.quick{margin:0;color:var(--muted);font-size:13px}.price-box{min-width:130px;text-align:right}.price-box small,.price-box span{display:block;color:var(--muted);font-size:11px}.price-box strong{display:block;font-size:27px;line-height:1.2}.summary{font-size:13px;color:#536174;line-height:1.85;margin:20px 0}.details{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.details div{background:var(--bg);padding:10px 12px;border-radius:11px}.details small{display:block;color:var(--muted);font-size:11px}.details b{font-size:13px}.rank-main ul{margin:18px 0;padding-left:18px;color:#536174;font-size:12px;display:grid;gap:4px}.rank-actions{border-top:1px solid var(--line);padding-top:17px;display:flex;align-items:center;justify-content:space-between;gap:12px}.text-link{color:var(--brand);font-size:13px;font-weight:800}@media(max-width:700px){.rank-airport{grid-template-columns:1fr}.rank-side{flex-direction:row;justify-content:space-between;padding:11px 17px}.rank-label{writing-mode:horizontal-tb;margin:0}.rank-main{padding:20px}.rank-top{align-items:flex-start}.price-box{min-width:100px}.details{grid-template-columns:1fr 1fr}.rank-actions{align-items:stretch;flex-direction:column}.rank-actions .btn{width:100%}}
+.editorial-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:0 0 17px}.editorial-notes p{margin:0;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:#647184;font-size:11px;line-height:1.75}.editorial-notes b{color:#364153}@media(max-width:700px){.editorial-notes{grid-template-columns:1fr}}
+.rank-airport{--accent:#0f766e;--accent2:#193149;border-top:3px solid var(--accent)}.rank-airport[data-theme="sky"]{--accent:#0284c7;--accent2:#164e63}.rank-airport[data-theme="amber"]{--accent:#d97706;--accent2:#78350f}.rank-airport[data-theme="violet"]{--accent:#7c3aed;--accent2:#4c1d95}.rank-airport[data-theme="teal"]{--accent:#0d9488;--accent2:#134e4a}.rank-airport[data-theme="cyan"]{--accent:#0891b2;--accent2:#164e63}.rank-airport[data-theme="indigo"]{--accent:#4f46e5;--accent2:#312e81}.rank-airport[data-theme="rose"]{--accent:#e11d48;--accent2:#881337}.rank-airport[data-theme="slate"]{--accent:#64748b;--accent2:#334155}.rank-airport[data-theme="lime"]{--accent:#65a30d;--accent2:#365314}.rank-airport[data-theme="blue"]{--accent:#2563eb;--accent2:#1e3a8a}.rank-airport[data-theme="orange"]{--accent:#ea580c;--accent2:#7c2d12}.rank-airport[data-theme="fuchsia"]{--accent:#c026d3;--accent2:#701a75}.rank-airport[data-theme="red"]{--accent:#dc2626;--accent2:#7f1d1d}.rank-airport[data-theme="navy"]{--accent:#334155;--accent2:#0f172a}.rank-airport .rank-side{background:linear-gradient(155deg,#0b1220,var(--accent2))}.position-banner{display:flex;align-items:center;justify-content:space-between;border-left:3px solid var(--accent);background:#f8fafc;padding:8px 11px;margin-top:15px;border-radius:0 9px 9px 0}.position-banner span{color:var(--accent);font-size:12px;font-weight:900}.position-banner small{color:var(--muted);font-size:10px}
+</style>

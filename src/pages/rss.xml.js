@@ -1,0 +1,2 @@
+import rss from '@astrojs/rss'; import { getCollection } from 'astro:content';
+export async function GET(context){const posts=(await getCollection('posts')).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf());return rss({title:'V2梯子',description:'机场线路、套餐价格与网络工具指南',site:context.site,items:posts.map(p=>({title:p.data.title,description:p.data.description,pubDate:p.data.pubDate,link:`/blog/${p.id}/`,categories:[p.data.category,...p.data.tags]})),customData:'<language>zh-CN</language>'})}

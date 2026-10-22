@@ -1,0 +1,5 @@
+---
+import { site } from '@/data/site';
+const path = Astro.url.pathname;
+---
+<header class="site-header"><div class="container nav"><a class="logo" href="/"><img class="logo-image" src="/logo.svg" width="38" height="38" alt={`${site.name} Logo`} /><span>{site.name}</span></a><nav class="nav-links" id="nav-links">{site.nav.map(([label, href]) => <a class={path.startsWith(href) ? 'active' : ''} href={href}>{label}</a>)}</nav><div class="nav-actions"><a class="icon-btn search-link" href="/search/" aria-label="搜索">⌕</a><button class="icon-btn menu-btn" id="menu-btn" aria-label="菜单">☰</button></div></div></header><script>document.getElementById('menu-btn')?.addEventListener('click', () => document.getElementById('nav-links')?.classList.toggle('open'));</script>

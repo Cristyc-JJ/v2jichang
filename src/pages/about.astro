@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+const work=[
+  ['统一资料口径','按相近价格、流量、线路、优惠码和核验日期展示，无法确认的数据明确标记待核实。'],
+  ['记录异常与恢复','关注官网、节点、公告、客服、支付和套餐变化，同时记录故障开始及恢复情况。'],
+  ['披露推广关系','推广链接清楚标注，商业合作不应隐藏风险提示或覆盖资料状态。']
+];
+---
+<BaseLayout title="关于V2Ray机场推荐榜和梯子选购（持续更新）与资料方法" description="了解V2Ray机场推荐榜和梯子选购（持续更新）的资料来源、风险监测、排名原则、推广披露和内容更新方法。">
+  <header class="page-hero"><div class="container"><span class="eyebrow">ABOUT · METHODOLOGY</span><h1>先核验资料，再给出推荐。</h1><p>本站整理机场价格、流量、线路、客户端、优惠码和运营风险，把分散信息变成可以复查、比较和及时更新的判断依据。</p></div></header>
+  <section class="section"><div class="container"><div class="grid-3">{work.map(([name,text],i)=><article class="card"><span class="tag">0{i+1}</span><h2>{name}</h2><p>{text}</p></article>)}</div></div></section>
+  <section class="section"><div class="container article-shell"><article class="prose"><h2>资料来源与核验顺序</h2><p>优先查看服务商正式页面、套餐结算页、公告和工单回复，再结合页面记录、可复查线索与跨网络测试。单张测速图或匿名传言只能作为继续核验的起点。</p><h2>机场状态与风险监测</h2><p>异常会区分为一般故障、重点观察、高风险和资料不足。判断时关注持续时间、影响范围、运营回应和恢复记录，避免一次节点失败就直接定性。</p><h2>排名和推荐原则</h2><p>排行榜用于缩小候选范围，不是永久质量证明。价格、优惠、节点数量和一次测速都不能单独代表长期稳定。</p><h2>推广链接与商业关系</h2><p>本站部分入口可能产生佣金，相关链接会明确标记。商业合作不应删除风险提示、隐藏待核实状态或把公开参数包装成独立实测。</p><h2>内容更新流程</h2><ol><li>发现价格、域名、节点、支付或公告变化。</li><li>跨入口与不同网络完成交叉核验。</li><li>更新资料日期、观察标签和风险说明。</li><li>服务恢复后补充恢复时间与后续表现。</li></ol><h2>内容边界</h2><p>本站不保证任何机场、节点、客户端或优惠码永久有效。读者需要遵守所在地法律法规，并独立评估隐私、账号、资金与业务风险。</p></article><aside class="toc"><div class="card"><strong>风险优先</strong><p class="muted">优惠只用于降低价格，不能代替短周期测试、备用线路和资金风险控制。</p><a href="/blog/privacy-basics/">查看跑路风险指南 →</a></div></aside></div></section>
+</BaseLayout>

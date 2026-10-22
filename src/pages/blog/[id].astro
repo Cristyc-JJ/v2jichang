@@ -1,0 +1,4 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro'; import { getCollection, render } from 'astro:content'; export async function getStaticPaths(){return (await getCollection('posts')).map(p=>({params:{id:p.id},props:{p}}))} const {p}=Astro.props; const {Content}=await render(p);
+---
+<ArticleLayout {...p.data}><Content/></ArticleLayout>

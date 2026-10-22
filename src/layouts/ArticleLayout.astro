@@ -1,0 +1,7 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AdSlot from '@/components/AdSlot.astro';
+const { title, description, pubDate, updatedDate, category, tags=[] } = Astro.props;
+const schema={'@context':'https://schema.org','@type':'Article',headline:title,description,datePublished:pubDate,dateModified:updatedDate??pubDate,author:{'@type':'Organization',name:'V2Ray机场推荐榜和梯子选购（持续更新）'},publisher:{'@type':'Organization',name:'V2Ray机场推荐榜和梯子选购（持续更新）'},mainEntityOfPage:Astro.url.href};
+---
+<BaseLayout title={title} description={description} type="article" schema={schema}><header class="page-hero"><div class="container"><span class="eyebrow">{category}</span><h1>{title}</h1><p>{description}</p><p class="muted">发布于 {new Date(pubDate).toLocaleDateString('zh-CN')} {updatedDate&&`· 更新于 ${new Date(updatedDate).toLocaleDateString('zh-CN')}`} · {tags.join(' · ')}</p></div></header><div class="container article-shell"><article class="prose"><slot/><section class="section"><div class="notice">提示：网络服务的价格、线路与可用性会变化。请先选择短周期或小额套餐，并在自己的网络环境中验证。</div></section></article><aside class="toc"><AdSlot label="侧栏合作位"/><div class="card" style="margin-top:16px"><strong>阅读建议</strong><a href="/rankings/">先看综合排行榜</a><a href="/about/">了解评分方法</a><a href="/guides/">查看客户端教程</a></div></aside></div></BaseLayout>

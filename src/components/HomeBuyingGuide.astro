@@ -1,0 +1,134 @@
+---
+const comparisonRows = [
+  ['日常浏览、聊天与轻办公', '50–100 GB', '稳定中转或专线', '先看晚高峰稳定性和客户端兼容'],
+  ['高清视频与流媒体', '100–300 GB', '低倍率、带宽充足的线路', '确认常用平台解锁与节点拥塞情况'],
+  ['AI 工具与远程办公', '80–200 GB', '低延迟、出口质量稳定', '关注 IP 质量、掉线和重连表现'],
+  ['多设备或家庭共享', '200 GB 以上', '大流量套餐或一次性流量', '核对设备数、流量倍率和共享限制']
+];
+
+const faqs = [
+  ['机场越贵就一定越稳定吗？', '不一定。价格通常会受到线路成本、流量额度、品牌运营和促销策略影响。真正需要验证的是你所在地区、宽带运营商和常用时段下的延迟、丢包、速度波动与故障恢复。'],
+  ['IEPL、IPLC 和公网中转应该怎么选？', '专线通常更强调稳定和低延迟，公网中转通常更看重价格与流量性价比。线路名称只能作为初筛依据，最终仍应通过月付或小额套餐在自己的网络环境中测试。'],
+  ['为什么不建议一开始就买年付？', '机场服务存在套餐调整、线路波动和运营变化等不确定性。先用短周期验证晚高峰、常用节点、客户端和客服，再决定是否延长周期，可以降低预付风险。'],
+  ['月流量应该选多少？', '轻度网页与聊天用户通常从 50–100 GB 起步；经常看视频可考虑 100–300 GB；多设备、4K 视频或大文件场景需要更高额度。还要把节点倍率计算在实际消耗内。'],
+  ['一次性订阅适合什么用户？', '它更适合使用不连续、希望流量长期有效或不想每月续费的用户。购买前要确认有效期、是否会清零、可用节点范围和售后规则。'],
+  ['机场排行榜应该怎么看？', '排行榜适合缩小候选范围，而不是替代个人测试。建议先按预算、流量和线路筛出 2–3 家，再逐一验证常用场景，并保存购买条款和套餐截图。']
+];
+---
+
+<section class="section buying-guide" id="ladder-guide" aria-labelledby="airport-guide-title">
+  <div class="guide-container">
+    <header class="guide-intro">
+      <span class="eyebrow">AIRPORT BUYING GUIDE</span>
+      <h2 id="airport-guide-title">2026 机场梯子选购指南：从线路、流量到稳定性一次看懂</h2>
+      <p>选择机场不能只看“节点多”“速度快”或低价促销。更可靠的方法，是先明确自己的使用场景，再比较线路质量、套餐成本、流量倍率、客户端兼容、售后与长期运营风险。下面这套方法可以配合本站现有 15 家机场资料使用，帮助你从榜单中筛出更适合自己的候选项。</p>
+      <div class="guide-jump" aria-label="本文目录">
+        <a href="#quick-choice">快速选择</a><a href="#route-types">线路区别</a><a href="#plan-cost">套餐成本</a><a href="#user-types">人群推荐</a><a href="#client-safety">客户端安全</a><a href="#backup-plan">备用方案</a><a href="#test-method">测试方法</a><a href="#risk-check">避坑清单</a><a href="#airport-faq">常见问题</a>
+      </div>
+    </header>
+
+    <div class="guide-layout">
+      <article class="guide-content">
+        <section id="quick-choice">
+          <span class="section-number">01</span>
+          <h3>先按使用场景选，不要先被套餐价格带着走</h3>
+          <p>同一家机场在不同地区、不同宽带和不同时间段的表现可能完全不同。偶尔查资料的用户，没有必要为超大流量付费；经常看高清视频、使用 AI 工具或远程办公的用户，则更需要关注晚高峰稳定性、低延迟和出口质量。先确认需求，才能判断一个套餐究竟是便宜，还是只是看起来便宜。</p>
+          <div class="table-wrap guide-table"><table><thead><tr><th>主要场景</th><th>建议流量</th><th>优先线路</th><th>重点检查</th></tr></thead><tbody>{comparisonRows.map(row => <tr>{row.map(cell => <td>{cell}</td>)}</tr>)}</tbody></table></div>
+          <div class="tip"><strong>快速建议：</strong>第一次购买时先从月付、低门槛套餐开始，选择 2–3 家候选机场，在自己的常用宽带和手机网络下对比，而不是只看他人的测速截图。</div>
+        </section>
+
+        <section id="route-types">
+          <span class="section-number">02</span>
+          <h3>看懂公网直连、中转、IEPL 与 IPLC 的区别</h3>
+          <p><strong>公网直连</strong>通常成本较低，但线路受公网拥塞和国际出口波动影响较大；<strong>公网中转</strong>通过国内入口优化连接，往往比纯直连更稳定，适合预算有限但重视日常可用性的用户；<strong>IEPL/IPLC 等专线</strong>一般强调更可控的链路、较低延迟与晚高峰表现，但价格也可能更高。</p>
+          <p>需要注意的是，线路标签不是质量保证。同样写着“专线”或“中转”，入口质量、落地带宽、节点负载和运维能力仍可能存在明显差异。选购时要结合本站资料中的线路类型、套餐价格和核验状态，再用实际体验完成最后判断。</p>
+          <div class="compare-cards">
+            <div><b>预算优先</b><span>从稳定中转与较低月付方案开始，避免只追求节点数量。</span></div>
+            <div><b>稳定优先</b><span>优先考察专线或高质量中转，并在晚高峰测试连续可用性。</span></div>
+            <div><b>低延迟优先</b><span>选择物理距离较近的入口与落地，关注丢包而不只看测速峰值。</span></div>
+          </div>
+        </section>
+
+        <section id="plan-cost">
+          <span class="section-number">03</span>
+          <h3>别只比较月付价格，要计算真实流量成本</h3>
+          <p>套餐页面上的 100 GB 不一定等于可以完整使用 100 GB。部分节点可能采用 1.5 倍、2 倍甚至更高倍率，实际可用流量会更快消耗。比较机场价格时，应同时记录月付金额、基础流量、节点倍率、流量重置日、设备数量限制和超额后的处理方式。</p>
+          <p>年付折扣、优惠码和一次性套餐可以降低表面成本，但也会增加预付风险。更稳妥的顺序是：先月付验证，再观察服务商的更新公告、故障处理和客服响应，确认适合长期使用后再考虑较长周期。任何优惠都不应成为跳过测试的理由。</p>
+          <ul class="check-list">
+            <li><b>看结算价：</b>确认优惠是否只限首月，以及续费是否恢复原价。</li>
+            <li><b>看倍率：</b>常用地区节点的倍率比套餐总流量更影响实际成本。</li>
+            <li><b>看周期：</b>确认按自然月还是购买日重置，未用流量能否结转。</li>
+            <li><b>看限制：</b>检查设备数、并发连接、下载、共享和退款规则。</li>
+          </ul>
+        </section>
+
+        <section id="user-types">
+          <span class="section-number">04</span>
+          <h3>不同用户应该优先选择什么类型的机场？</h3>
+          <p>没有一款机场能够同时满足所有人。新手更需要简单的订阅导入和清楚的教程；视频用户更在意持续带宽与低倍率；远程办公用户则需要稳定连接、低丢包和快速故障恢复。与其寻找所谓“全能机场”，不如先确定自己最重要的两项需求。</p>
+          <div class="persona-grid"><div><b>新手用户</b><span>优先选择教程完整、订阅导入简单、套餐规则清楚的服务。</span></div><div><b>预算型用户</b><span>关注每元可用流量、常用节点倍率和月付门槛。</span></div><div><b>流媒体用户</b><span>检查持续带宽、平台可用性和晚高峰拥塞情况。</span></div><div><b>AI 与办公用户</b><span>重视出口质量、连接稳定、节点切换与故障恢复。</span></div><div><b>多设备家庭</b><span>核对并发、设备数量、路由器支持和大流量成本。</span></div><div><b>低频备用用户</b><span>可考虑一次性流量，但要确认有效期和清零规则。</span></div></div>
+        </section>
+
+        <section id="client-safety">
+          <span class="section-number">05</span>
+          <h3>客户端、协议兼容与订阅安全同样重要</h3>
+          <p>线路不错但客户端难用，同样会影响体验。购买前应确认服务是否兼容 Windows、macOS、Android、iOS 或路由器环境，并检查是否提供清晰的订阅导入、更新和故障排查说明。不要因为陌生页面提示而随意安装来源不明的软件。</p>
+          <div class="security-panel"><div><b>确认客户端来源</b><span>优先使用可信项目的正式发布渠道，避免被二次打包的软件。</span></div><div><b>保护订阅链接</b><span>订阅地址通常包含个人凭据，不要截图公开或提交给陌生网站。</span></div><div><b>准备备用配置</b><span>保存可靠的安装方式和必要说明，避免异常时无法恢复。</span></div><div><b>定期更新订阅</b><span>节点变更后及时刷新配置，但不要共享个人订阅。</span></div></div>
+        </section>
+
+        <section id="backup-plan">
+          <span class="section-number">06</span>
+          <h3>主力机场与备用机场应该怎么搭配？</h3>
+          <p>对网络连续性要求较高的用户，不应把全部需求放在同一家服务上。主力机场可以优先考虑常用地区的稳定性和速度；备用机场则可以选择低月付、小流量或一次性套餐，只要线路、入口和运营主体与主力方案有所差异即可。</p>
+          <div class="compare-cards"><div><b>主力方案</b><span>承担视频、AI、办公与主要流量，重点看稳定性。</span></div><div><b>备用方案</b><span>低成本保持可用，在主线路维护或故障时临时切换。</span></div><div><b>本地备份</b><span>保留客户端安装方式、教程和配置恢复方法。</span></div></div>
+        </section>
+
+        <section id="test-method">
+          <span class="section-number">07</span>
+          <h3>用 30 分钟完成一次有意义的机场测试</h3>
+          <p>测速结果只是参考。测试时应使用你平时真正会用的设备、客户端、宽带与网络场景，并尽量放在晚高峰进行。先测试订阅导入和节点切换，再观察网页响应、视频首开、持续播放、AI 服务连接以及大文件下载时的波动。</p>
+          <ol class="steps">
+            <li><span>1</span><div><b>检查接入</b><p>确认订阅能正常导入，常用客户端可以更新节点，帮助文档足够清楚。</p></div></li>
+            <li><span>2</span><div><b>测试常用节点</b><p>不要遍历所有节点，重点测试香港、日本、新加坡或你实际需要的地区。</p></div></li>
+            <li><span>3</span><div><b>覆盖两个时段</b><p>分别在普通时段和 20:00–23:00 左右测试，比较延迟、丢包和速度波动。</p></div></li>
+            <li><span>4</span><div><b>模拟真实任务</b><p>连续播放视频、使用 AI 工具、浏览常用网站，并观察断线后的恢复速度。</p></div></li>
+          </ol>
+        </section>
+
+        <section id="risk-check">
+          <span class="section-number">08</span>
+          <h3>购买机场前必须确认的 8 个细节</h3>
+          <div class="risk-grid">
+            <div><b>套餐是否自动续费</b><span>避免不必要的连续扣款。</span></div><div><b>退款条件是否明确</b><span>了解已用流量后的退款规则。</span></div>
+            <div><b>是否有工单渠道</b><span>公告群不能完全替代售后支持。</span></div><div><b>节点倍率是否公开</b><span>防止大流量套餐被高倍率快速消耗。</span></div>
+            <div><b>设备与并发限制</b><span>家庭共享或多设备用户尤其要注意。</span></div><div><b>订阅链接安全</b><span>不要公开分享包含个人凭据的订阅地址。</span></div>
+            <div><b>最近是否持续维护</b><span>观察公告、节点更新和故障恢复记录。</span></div><div><b>价格资料核验日期</b><span>下单前以服务商最新结算页面为准。</span></div>
+          </div>
+          <blockquote>机场属于持续运营型服务，不存在一次选择后永久稳定的方案。保留一个备用连接、控制预付金额并定期复查套餐，往往比追求“永不失联”的宣传更实际。</blockquote>
+        </section>
+
+        <section id="airport-faq">
+          <span class="section-number">09</span>
+          <h3>机场梯子常见问题</h3>
+          <div class="faq-list">{faqs.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div>
+        </section>
+
+        <section class="guide-conclusion">
+          <h3>最后怎么选：先缩小范围，再亲自验证</h3>
+          <p>一个更合理的选购流程是：先在机场排行榜中按预算、月流量和线路筛选，再阅读候选机场的详细资料，最后购买短周期套餐进行实际测试。本站保留现有机场名单与公开资料，不把推广关系包装成实测结论；价格、优惠和线路都可能变化，购买前请再次核对结算页面与服务条款。</p>
+          <div class="guide-actions"><a class="btn primary" href="/rankings/">查看 15 家机场排行榜 →</a><a class="btn" href="/airports/">浏览全部机场资料</a></div>
+        </section>
+      </article>
+
+      <aside class="guide-sidebar">
+        <div class="card"><span class="eyebrow">选择顺序</span><ol><li>明确预算与流量</li><li>筛选线路类型</li><li>查看倍率与限制</li><li>购买短周期套餐</li><li>晚高峰真实测试</li></ol></div>
+        <div class="card"><strong>资料说明</strong><p>本站展示价格、线路、优惠码与核验状态，用于帮助初步筛选。未标注独立测试的内容，不应理解为实测承诺。</p><a href="/about/">查看评测方法与推广披露 →</a></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+.buying-guide{padding-top:72px}.guide-container{width:min(1160px,calc(100% - 32px));margin:auto}.guide-intro{max-width:900px;margin-bottom:42px}.guide-intro h2{font-size:clamp(34px,5vw,54px);line-height:1.12;letter-spacing:-.045em;margin:12px 0 18px}.guide-intro>p{font-size:18px;color:var(--muted);max-width:850px}.guide-jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.guide-jump a{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;color:var(--brand)}.guide-layout{display:grid;grid-template-columns:minmax(0,800px) 270px;gap:48px;align-items:start}.guide-content{font-size:17px}.guide-content>section{scroll-margin-top:90px;padding:0 0 54px}.guide-content h3{font-size:30px;line-height:1.25;letter-spacing:-.025em;margin:7px 0 16px}.guide-content p{color:#465568}.section-number{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--brand)}.guide-table{margin:25px 0}.guide-table table{min-width:720px}.guide-table th{top:69px}.tip{background:var(--soft);border-left:4px solid var(--brand);border-radius:0 13px 13px 0;padding:16px 18px;color:#315f5b}.compare-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}.compare-cards>div,.risk-grid>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}.compare-cards b,.compare-cards span,.risk-grid b,.risk-grid span{display:block}.compare-cards span,.risk-grid span{color:var(--muted);font-size:13px;margin-top:6px}.check-list{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}.check-list li{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px;color:var(--muted);font-size:14px}.check-list b{color:var(--ink)}.steps{list-style:none;padding:0;display:grid;gap:12px}.steps li{display:grid;grid-template-columns:40px 1fr;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.steps li>span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--brand);font-weight:900}.steps p{font-size:14px;margin:4px 0 0}.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.guide-content blockquote{margin:22px 0 0;padding:18px 20px;border-left:4px solid #d69b16;background:var(--warn);border-radius:0 13px 13px 0;color:#6c531c}.faq-list{display:grid;gap:10px}.faq-list details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 18px}.faq-list summary{cursor:pointer;font-weight:800;padding:16px 28px 16px 0}.faq-list p{font-size:15px;margin:0 0 17px}.guide-conclusion{background:#0b1220;color:#fff;border-radius:22px;padding:30px!important}.guide-conclusion p{color:#aeb9c7}.guide-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.guide-conclusion .btn:not(.primary){color:#fff;background:#182233;border-color:#354258}.guide-sidebar{position:sticky;top:92px;display:grid;gap:14px}.guide-sidebar .card{padding:20px}.guide-sidebar ol{padding-left:21px;margin:14px 0 0}.guide-sidebar li{padding:5px 0;color:#526173}.guide-sidebar p{font-size:13px}.guide-sidebar a{color:var(--brand);font-size:13px;font-weight:800}@media(max-width:980px){.guide-layout{grid-template-columns:1fr}.guide-sidebar{position:static;grid-template-columns:1fr 1fr}}@media(max-width:700px){.buying-guide{padding-top:48px}.guide-intro>p{font-size:16px}.guide-content h3{font-size:25px}.compare-cards,.check-list,.risk-grid,.guide-sidebar{grid-template-columns:1fr}.guide-content>section{padding-bottom:42px}.guide-conclusion{padding:24px!important}}
+.persona-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.persona-grid>div,.security-panel>div{padding:17px;background:#fff;border:1px solid var(--line);border-radius:14px}.persona-grid b,.persona-grid span,.security-panel b,.security-panel span{display:block}.persona-grid span,.security-panel span{color:var(--muted);font-size:13px;margin-top:5px}.security-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:#0b1220;border-radius:18px;padding:16px}.security-panel>div{background:#141f30;border-color:#2b394c}.security-panel b{color:#fff}.security-panel span{color:#aeb9c7}@media(max-width:700px){.persona-grid,.security-panel{grid-template-columns:1fr}}
+</style>

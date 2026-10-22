@@ -1,0 +1,4 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'; import AirportCard from '@/components/AirportCard.astro'; import { getCollection } from 'astro:content'; const airports=(await getCollection('airports')).sort((a,b)=>a.data.rank-b.data.rank);
+---
+<BaseLayout title="机场推荐"><header class="page-hero"><div class="container"><span class="eyebrow">按场景选择</span><h1>机场推荐</h1><p>不追求一份适合所有人的名单。按预算、流量、设备与内容需求，选择风险更可控的方案。</p></div></header><section class="section"><div class="container grid-3">{airports.map((a,i)=><AirportCard airport={a} rank={i+1}/>)}</div></section></BaseLayout>

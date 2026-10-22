@@ -1,0 +1,58 @@
+<div class="hero-visual" aria-label="机场线路、价格与使用场景概览">
+  <div class="visual-title">
+    <small>GLOBAL ROUTE MAP</small>
+    <b>线路、价格与场景一目了然</b>
+  </div>
+
+  <svg class="network-art" viewBox="0 0 560 380" role="img" aria-label="全球机场线路节点示意图">
+    <defs>
+      <linearGradient id="route-line" x1="0" x2="1">
+        <stop stop-color="#ffffff" />
+        <stop offset="1" stop-color="#8f98a6" />
+      </linearGradient>
+      <filter id="node-glow">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+    </defs>
+    <path d="M60 220 C150 70 220 80 282 188 S430 330 510 140" fill="none" stroke="url(#route-line)" stroke-width="3" stroke-dasharray="7 8" opacity=".9" />
+    <path d="M85 105 C190 210 350 20 478 225" fill="none" stroke="#c7ccd3" stroke-width="2" opacity=".55" />
+    <g fill="#ffffff" filter="url(#node-glow)">
+      <circle cx="60" cy="220" r="8" /><circle cx="150" cy="105" r="6" />
+      <circle cx="282" cy="188" r="11" /><circle cx="400" cy="275" r="7" />
+      <circle cx="510" cy="140" r="9" /><circle cx="478" cy="225" r="6" />
+    </g>
+    <g fill="#e5e7eb" font-size="12" font-family="Arial, sans-serif">
+      <text x="35" y="247">Hong Kong</text><text x="125" y="87">Tokyo</text>
+      <text x="257" y="222">Singapore</text><text x="374" y="304">Europe</text>
+      <text x="482" y="122">US West</text>
+    </g>
+    <g transform="translate(215 115)">
+      <rect width="134" height="56" rx="14" fill="#fff" opacity=".94" />
+      <text x="16" y="23" fill="#0f172a" font-size="11" font-weight="700">V2Ray机场推荐榜和梯子选购（持续更新）观测节点</text>
+      <text x="16" y="42" fill="#4b5563" font-size="10">15 家机场 · 持续更新</text>
+    </g>
+  </svg>
+
+  <span class="floating-chip chip-one">IEPL 专线</span>
+  <span class="floating-chip chip-two">一次性订阅</span>
+  <span class="floating-chip chip-three">流媒体 / AI</span>
+
+  <div class="keyword-grid">
+    <div class="keyword-card"><small>常规月流量</small><b>100–130 GB</b></div>
+    <div class="keyword-card"><small>重点对比</small><b>价格 · 线路 · 倍率</b></div>
+    <div class="keyword-card"><small>透明标注</small><b>推广与核验状态</b></div>
+  </div>
+</div>
+
+<style>
+  .hero-visual{position:relative;min-height:520px;border-radius:30px;overflow:hidden;background:radial-gradient(circle at 72% 16%,#34383f 0,#1d2025 28%,#111318 68%,#090a0d 100%);box-shadow:0 30px 70px rgba(15,23,42,.17);border:1px solid #20242a}
+  .hero-visual:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:34px 34px}
+  .network-art{position:absolute;inset:35px 22px 110px;width:calc(100% - 44px);height:calc(100% - 145px)}
+  .visual-title{position:absolute;left:28px;top:25px;color:#fff;z-index:2}.visual-title small{display:block;color:#aeb4bd;font-weight:900;letter-spacing:.12em}.visual-title b{display:block;font-size:24px;margin-top:4px}
+  .keyword-grid{position:absolute;left:24px;right:24px;bottom:23px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px;z-index:2}
+  .keyword-card{background:rgba(255,255,255,.95);border:1px solid rgba(255,255,255,.42);border-radius:13px;padding:11px 12px;box-shadow:0 8px 25px rgba(0,0,0,.28)}.keyword-card small{display:block;color:#6b7280;font-size:9px}.keyword-card b{font-size:12px}
+  .floating-chip{position:absolute;z-index:3;background:#f7f7f7;color:#171717;border:1px solid #a3a3a3;border-radius:999px;padding:6px 10px;font-size:10px;font-weight:900;box-shadow:0 8px 20px rgba(0,0,0,.25)}.chip-one{right:22px;top:92px}.chip-two{left:25px;top:235px}.chip-three{right:30px;top:285px}
+  @media(max-width:980px){.hero-visual{min-height:460px}}
+  @media(max-width:620px){.hero-visual{min-height:430px}.keyword-grid{grid-template-columns:1fr 1fr}.keyword-card:last-child{grid-column:1/-1}.visual-title b{font-size:20px}.chip-two{top:220px}.chip-three{top:275px}}
+</style>

@@ -1,0 +1,4 @@
+---
+const { airport, rank } = Astro.props; const d=airport.data;
+---
+<article class="card airport-card"><span class="tag">#{rank??d.rank}</span> {d.featured&&<span class="badge">编辑精选</span>}<h3><a href={`/airports/${airport.id}/`}>{d.name}</a></h3><p>{d.tagline}</p><div class="score">{d.price===null?'待核实':`¥${d.price}`}<small>{d.price===null?'':' / 月起'}</small></div><div class="facts"><div class="fact"><small>常规月流量</small><strong>{d.traffic}</strong></div><div class="fact"><small>一次性订阅</small><strong>{d.oneTime}</strong></div><div class="fact"><small>线路</small><strong>{d.protocols.join(' / ')}</strong></div><div class="fact"><small>优惠码</small><strong>{d.coupon??'无'}</strong></div></div><a class="btn primary" href={`/airports/${airport.id}/`}>查看资料</a></article>

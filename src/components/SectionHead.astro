@@ -1,0 +1,4 @@
+---
+const { eyebrow, title, text, href, link='查看全部 →' } = Astro.props;
+---
+<div class="section-head"><div>{eyebrow&&<span class="eyebrow">{eyebrow}</span>}<h2>{title}</h2>{text&&<p>{text}</p>}</div>{href&&<a class="btn" href={href}>{link}</a>}</div>
